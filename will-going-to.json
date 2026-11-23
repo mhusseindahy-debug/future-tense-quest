@@ -1,0 +1,263 @@
+{
+  "id": "will-going-to",
+  "title": "Will vs. Be Going To",
+  "cheatsheet": [
+    {
+      "title": "WILL",
+      "icon": "⚡",
+      "subtitle": "In the moment",
+      "rules": [
+        {
+          "label": "Decisions made right now",
+          "example": "The phone is ringing. I'll answer it!"
+        },
+        {
+          "label": "Promises and offers",
+          "example": "I promise I'll help you."
+        },
+        {
+          "label": "Guesses and opinions",
+          "example": "I think it will be fun."
+        }
+      ]
+    },
+    {
+      "title": "BE GOING TO",
+      "icon": "🗓️",
+      "subtitle": "Already decided or seen",
+      "rules": [
+        {
+          "label": "Plans made before now",
+          "example": "I bought tickets. I'm going to watch a film."
+        },
+        {
+          "label": "Things you can see happening",
+          "example": "Look at those black clouds! It's going to rain."
+        }
+      ]
+    }
+  ],
+  "warmup": [
+    {
+      "pair_id": "1A",
+      "rule_focus": "Sudden Decision",
+      "context_clue": "You just noticed there is no milk in the fridge.",
+      "sentence_prompt": "Oh, we are out of milk! I ___ go to the shop right now.",
+      "correct_answer": "'ll",
+      "distractor_1": "'m going to",
+      "disambiguation_note": "You just found out now, so this is a sudden decision."
+    },
+    {
+      "pair_id": "1B",
+      "rule_focus": "Existing Plan",
+      "context_clue": "You wrote 'buy milk' on your shopping list this morning.",
+      "sentence_prompt": "I have my shopping list ready. I ___ buy some milk after school.",
+      "correct_answer": "'m going to",
+      "distractor_1": "'ll",
+      "disambiguation_note": "You planned this earlier today, before speaking."
+    },
+    {
+      "pair_id": "2A",
+      "rule_focus": "Opinion / Guess",
+      "context_clue": "You are talking about weather next summer.",
+      "sentence_prompt": "I think next July ___ be very hot.",
+      "correct_answer": "will",
+      "distractor_1": "is going to",
+      "disambiguation_note": "'I think' introduces a personal guess, not physical proof."
+    },
+    {
+      "pair_id": "2B",
+      "rule_focus": "Visible Evidence",
+      "context_clue": "You are looking at a weather map showing 45°C tomorrow.",
+      "sentence_prompt": "Look at the temperature on the screen! Tomorrow ___ be very hot.",
+      "correct_answer": "is going to",
+      "distractor_1": "will",
+      "disambiguation_note": "You can see the evidence on the screen right now."
+    },
+    {
+      "pair_id": "3A",
+      "rule_focus": "Offer in the Moment",
+      "context_clue": "Your friend drops their pencils on the floor.",
+      "sentence_prompt": "Don't worry, I ___ pick them up for you.",
+      "correct_answer": "'ll",
+      "distractor_1": "'m going to",
+      "disambiguation_note": "You are offering to help immediately."
+    },
+    {
+      "pair_id": "3B",
+      "rule_focus": "Prior Intention",
+      "context_clue": "Your friend asks why you are holding a broom.",
+      "sentence_prompt": "I ___ clean the classroom floor before the bell rings.",
+      "correct_answer": "'m going to",
+      "distractor_1": "'ll",
+      "disambiguation_note": "Holding the broom shows that you already planned to clean."
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "category": "Sudden Decision",
+      "icon_type": "lightning",
+      "context_clue": "The classroom is really hot and stuffy.",
+      "sentence_prompt": "I ___ open the window to get some fresh air.",
+      "correct_answer": "'ll",
+      "distractor_1": "'m going to",
+      "distractor_2": "going to",
+      "feedback_tip": "Use 'will' for decisions made at the exact moment of speaking."
+    },
+    {
+      "id": 2,
+      "category": "Existing Plan",
+      "icon_type": "calendar",
+      "context_clue": "Sara already bought her train ticket yesterday.",
+      "sentence_prompt": "Sara ___ visit her grandparents this weekend.",
+      "correct_answer": "is going to",
+      "distractor_1": "will",
+      "distractor_2": "are going to",
+      "feedback_tip": "Use 'be going to' for plans decided before the moment of speaking."
+    },
+    {
+      "id": 3,
+      "category": "Visible Evidence",
+      "icon_type": "eye",
+      "context_clue": "Look at those huge, black clouds in the sky!",
+      "sentence_prompt": "Take an umbrella! It ___ rain very soon.",
+      "correct_answer": "is going to",
+      "distractor_1": "will",
+      "distractor_2": "won't",
+      "feedback_tip": "Use 'be going to' when you can see clear evidence right now."
+    },
+    {
+      "id": 4,
+      "category": "Offer / Promise",
+      "icon_type": "heart",
+      "context_clue": "Your friend is carrying a heavy stack of books.",
+      "sentence_prompt": "Here, let me help. I ___ carry some of those for you.",
+      "correct_answer": "'ll",
+      "distractor_1": "'m going to",
+      "distractor_2": "won't",
+      "feedback_tip": "Use 'will' when offering to help someone right away."
+    },
+    {
+      "id": 5,
+      "category": "Existing Intention",
+      "icon_type": "checklist",
+      "context_clue": "Tom saved all his pocket money for three months.",
+      "sentence_prompt": "Tom ___ buy a new skateboard on Saturday.",
+      "correct_answer": "is going to",
+      "distractor_1": "will",
+      "distractor_2": "is will",
+      "feedback_tip": "Use 'be going to' when someone already has an intention or plan."
+    },
+    {
+      "id": 6,
+      "category": "Prediction (Opinion)",
+      "icon_type": "crystal_ball",
+      "context_clue": "You are guessing about a football match next year.",
+      "sentence_prompt": "I think our school team ___ win the championship!",
+      "correct_answer": "will",
+      "distractor_1": "is going to",
+      "distractor_2": "are going to",
+      "feedback_tip": "Use 'will' with 'I think' to give a personal opinion or guess."
+    },
+    {
+      "id": 7,
+      "category": "Negative Plan",
+      "icon_type": "calendar",
+      "context_clue": "We checked the cinema website and the film is sold out.",
+      "sentence_prompt": "We ___ watch the movie tonight after all.",
+      "correct_answer": "aren't going to",
+      "distractor_1": "won't",
+      "distractor_2": "isn't going to",
+      "feedback_tip": "Use 'aren't going to' when a previously made plan changes or is cancelled."
+    },
+    {
+      "id": 8,
+      "category": "Refusal / Promise",
+      "icon_type": "shield",
+      "context_clue": "Your little brother wants to read your private diary.",
+      "sentence_prompt": "No! You ___ read my diary—it's a secret!",
+      "correct_answer": "won't",
+      "distractor_1": "aren't going to",
+      "distractor_2": "will",
+      "feedback_tip": "Use 'won't' for a strong refusal or a promise not to do something."
+    },
+    {
+      "id": 9,
+      "category": "Visible Evidence",
+      "icon_type": "eye",
+      "context_clue": "Ali is running too fast on the wet floor.",
+      "sentence_prompt": "Watch out! He ___ slip and fall!",
+      "correct_answer": "is going to",
+      "distractor_1": "will",
+      "distractor_2": "are going to",
+      "feedback_tip": "Use 'be going to' because you can see the danger happening right now."
+    },
+    {
+      "id": 10,
+      "category": "Question (Plan)",
+      "icon_type": "calendar",
+      "context_clue": "You want to ask a classmate about their weekend plans.",
+      "sentence_prompt": "What ___ do after school on Friday?",
+      "correct_answer": "are you going to",
+      "distractor_1": "will you going to",
+      "distractor_2": "do you will",
+      "feedback_tip": "Use 'Are you going to...?' to ask about someone's existing plans."
+    },
+    {
+      "id": 11,
+      "category": "Question (Request)",
+      "icon_type": "speech",
+      "context_clue": "You need help with a difficult maths problem.",
+      "sentence_prompt": "___ you help me with question number five, please?",
+      "correct_answer": "Will",
+      "distractor_1": "Are you going to",
+      "distractor_2": "Going to",
+      "feedback_tip": "Use 'Will you...?' when asking someone for a favour or help right now."
+    },
+    {
+      "id": 12,
+      "category": "Sudden Decision",
+      "icon_type": "lightning",
+      "context_clue": "The waiter asks what you want to drink at a cafe.",
+      "sentence_prompt": "Hmm, I ___ have a glass of orange juice, please.",
+      "correct_answer": "'ll",
+      "distractor_1": "'m going to",
+      "distractor_2": "going to",
+      "feedback_tip": "Use 'will' when ordering food or making a quick choice."
+    },
+    {
+      "id": 13,
+      "category": "Existing Plan",
+      "icon_type": "checklist",
+      "context_clue": "The students packed their bags and are wearing sports clothes.",
+      "sentence_prompt": "Class 7B ___ play basketball in the gym next.",
+      "correct_answer": "is going to",
+      "distractor_1": "will",
+      "distractor_2": "are will",
+      "feedback_tip": "Use 'be going to' because the preparation shows the plan is already set. 'Class 7B' is treated as one group."
+    },
+    {
+      "id": 14,
+      "category": "Promise",
+      "icon_type": "heart",
+      "context_clue": "You forgot to bring your homework to school today.",
+      "sentence_prompt": "I promise I ___ bring it to your desk tomorrow morning.",
+      "correct_answer": "'ll",
+      "distractor_1": "'m going to",
+      "distractor_2": "won't",
+      "feedback_tip": "Use 'will' after 'I promise' to guarantee an action."
+    },
+    {
+      "id": 15,
+      "category": "Negative Evidence",
+      "icon_type": "eye",
+      "context_clue": "Your friend didn't study at all for the science test.",
+      "sentence_prompt": "She didn't revise, so she ___ pass the exam easily.",
+      "correct_answer": "isn't going to",
+      "distractor_1": "won't to",
+      "distractor_2": "aren't going to",
+      "feedback_tip": "Use 'isn't going to' when the present facts point to a likely result."
+    }
+  ]
+}

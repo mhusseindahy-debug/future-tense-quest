@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4f46e5">
+<title>Future Tense Quest | ESL Grammar Game</title>
+<style>
+:root{--ink:#172033;--muted:#64748b;--brand:#4f46e5;--brand2:#7c3aed;--bg:#f5f7ff;--card:#fff;--green:#15803d;--greenbg:#dcfce7;--red:#b45309;--redbg:#fef3c7;--line:#e5e7eb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,4vw,42px);background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.brand{font-weight:850;letter-spacing:-.5px;color:var(--brand);display:flex;align-items:center;gap:9px}.brand-mark{background:#ede9fe;border-radius:12px;padding:8px}
+.mute{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 14px;color:var(--ink);font-weight:650}
+main{width:min(900px,calc(100% - 28px));margin:28px auto 60px}.screen{display:none}.screen.active{display:block;animation:appear .25s ease}
+@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.hero{text-align:center;padding:clamp(20px,5vw,48px) 12px 26px}.eyebrow{color:var(--brand);font-weight:800;text-transform:uppercase;letter-spacing:1.3px;font-size:.76rem}
+h1{font-size:clamp(2rem,6vw,3.35rem);line-height:1.08;letter-spacing:-1.5px;margin:12px 0}h2{font-size:clamp(1.45rem,4vw,2rem);margin:8px 0 12px}h3{margin:0 0 8px}
+.sub{color:var(--muted);font-size:1.06rem;line-height:1.6;max-width:650px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,4vw,30px);box-shadow:0 8px 26px #25315b0a}
+.lesson-list{display:grid;gap:12px;max-width:650px;margin:0 auto}.lesson-choice{display:flex;align-items:center;gap:16px;text-align:left;border:1px solid var(--line);background:white;padding:18px;border-radius:17px;width:100%;transition:.18s}.lesson-choice:hover{border-color:#a5b4fc;transform:translateY(-2px)}.lesson-icon{font-size:1.8rem;background:#eef2ff;border-radius:14px;padding:12px}.lesson-choice strong{display:block;font-size:1.05rem}.lesson-choice small{color:var(--muted)}
+.btn{border:0;border-radius:13px;padding:13px 20px;font-weight:800;background:var(--brand);color:white;box-shadow:0 5px 12px #4f46e52b;transition:.15s}.btn:hover{background:#4338ca;transform:translateY(-1px)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.btn.secondary{background:#eef2ff;color:var(--brand);box-shadow:none}.btn.ghost{background:transparent;color:var(--brand);box-shadow:none;padding:10px}.actions{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}.rule-card{border:1px solid var(--line);border-radius:18px;padding:20px;background:#fff}.rule-head{display:flex;gap:12px;align-items:center;margin-bottom:14px}.rule-icon{font-size:1.65rem;background:#f1f5f9;padding:10px;border-radius:13px}.rule-card li{margin:12px 0;color:var(--muted);line-height:1.5}.rule-card li b{color:var(--ink);display:block}.example{color:var(--brand);font-style:italic;margin-top:3px}
+.progress-row{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem;font-weight:700;margin-bottom:10px}.progress{height:9px;background:#e8eaf4;border-radius:20px;overflow:hidden;margin-bottom:22px}.progress>div{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0;transition:width .25s}
+.context{background:#eef2ff;border-radius:14px;padding:14px 16px;color:#3730a3;line-height:1.5;margin:16px 0}.context b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.question{font-size:clamp(1.25rem,3.6vw,1.75rem);font-weight:750;line-height:1.6;text-align:center;margin:24px 0}.blank{display:inline-block;min-width:60px;border-bottom:3px dashed #818cf8;color:var(--brand);padding:0 5px;white-space:nowrap}
+.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}.options.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:600px;margin-inline:auto}
+.option{background:#fff;border:2px solid var(--line);border-radius:15px;padding:16px 10px;font-size:1.05rem;font-weight:800;color:var(--ink);min-height:60px;overflow-wrap:anywhere}.option:hover:not(:disabled){border-color:#a5b4fc;background:#f8faff}.option.correct{border-color:#22c55e;background:var(--greenbg);color:#166534}.option.wrong{border-color:#f59e0b;background:var(--redbg);color:#92400e}
+.feedback{margin-top:18px;border-radius:15px;padding:15px 17px;line-height:1.5;display:none}.feedback.show{display:block;animation:appear .2s}.feedback.good{background:var(--greenbg);color:#166534}.feedback.bad{background:var(--redbg);color:#92400e}
+.quiz-meta{display:flex;gap:10px;flex-wrap:wrap}.pill{background:#f1f5f9;border-radius:999px;padding:8px 12px;font-size:.88rem;font-weight:750;color:#475569}.timer-wrap{display:flex;align-items:center;gap:8px}.timer{height:7px;width:100px;background:#e2e8f0;border-radius:20px;overflow:hidden}.timer>div{height:100%;background:#6366f1;width:100%;transition:width .2s linear}.timer.low>div{background:#f59e0b}
+.shake{animation:shake .28s}@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:17px;text-align:center}.stat strong{display:block;font-size:clamp(1.5rem,4vw,2rem);color:var(--brand)}.stat span{color:var(--muted);font-size:.84rem;font-weight:700}
+.review{margin-top:24px}.review-item{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:10px;line-height:1.5}.review-item strong{display:block;margin-bottom:5px}.review-item .yours{color:#92400e}.review-item .answer{color:#166534}
+.note{color:var(--muted);font-size:.88rem;text-align:center;margin-top:16px}
+@media(max-width:620px){.cards{grid-template-columns:1fr}.options{grid-template-columns:1fr}.options.two{grid-template-columns:1fr}.option{min-height:54px}.stats{gap:7px}.stat{padding:13px 6px}.topbar{padding:12px 15px}main{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">🎯</span> Future Tense Quest</div>
+  <button class="mute" id="soundToggle" aria-pressed="false">🔊 Sound: On</button>
+</header>
+<main>
+  <section class="screen active" id="screen-menu">
+    <div class="hero"><div class="eyebrow">English Grammar • Grade 7 • A2</div><h1>Ready to level up?</h1><p class="sub">Choose a lesson, sharpen your grammar skills and take on the challenge. Learn a little. Play a lot!</p></div>
+    <div class="lesson-list" id="lessonList"><div class="panel">Loading lessons…</div></div>
+    <p class="note">No account needed. Your score stays on this device only.</p>
+  </section>
+
+  <section class="screen" id="screen-cheat">
+    <div class="eyebrow">Before you play</div><h2 id="lessonTitle">Will vs. Be Going To</h2><p class="sub" style="margin:0">Two ways to talk about the future. Look at the difference.</p>
+    <div class="cards" id="cheatCards"></div>
+    <div class="actions"><button class="btn" id="startWarmup">Start Warm-Up →</button><button class="btn ghost" id="skipWarmup">Skip to Main Challenge</button></div>
+  </section>
+
+  <section class="screen" id="screen-warmup">
+    <div class="progress-row"><span>🧠 Guided Warm-Up</span><span id="warmCount">1 / 6</span></div><div class="progress"><div id="warmProgress"></div></div>
+    <div class="panel" id="warmPanel">
+      <div class="eyebrow" id="warmFocus">Spot the difference</div>
+      <div class="context"><b>Context clue</b><span id="warmContext"></span></div>
+      <div class="question" id="warmQuestion"></div>
+      <div class="options two" id="warmOptions"></div>
+      <div class="feedback" id="warmFeedback" aria-live="polite"></div>
+      <div class="actions"><button class="btn" id="warmNext" disabled>Next →</button></div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-game">
+    <div class="progress-row"><span>🚀 Main Challenge</span><span id="gameCount">Question 1 / 15</span></div><div class="progress"><div id="gameProgress"></div></div>
+    <div class="quiz-meta"><span class="pill" id="scorePill">⭐ Score: 0</span><span class="pill" id="streakPill">🔥 Streak: 0</span><span class="pill timer-wrap" id="timerPill"><span>⏱</span><span class="timer" id="timerBar"><div id="timerFill"></div></span><span id="timerText">15s</span></span><label class="pill" style="cursor:pointer"><input type="checkbox" id="untimed" style="accent-color:#4f46e5;vertical-align:middle"> No timer</label></div>
+    <div class="panel" id="gamePanel" style="margin-top:16px">
+      <div class="eyebrow" id="gameCategory">Grammar challenge</div>
+      <div class="context"><b>Think about the situation</b><span id="gameContext"></span></div>
+      <div class="question" id="gameQuestion"></div>
+      <div class="options" id="gameOptions"></div>
+      <div class="feedback" id="gameFeedback" aria-live="polite"></div>
+      <div class="actions"><button class="btn" id="gameNext" disabled>Next Question →</button></div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-summary">
+    <div class="hero"><div class="eyebrow">Challenge complete</div><h1 id="summaryTitle">Well played!</h1><p class="sub">Every attempt helps you improve. Check your results below.</p></div>
+    <div class="stats"><div class="stat"><strong id="finalScore">0</strong><span>Final score</span></div><div class="stat"><strong id="accuracy">0%</strong><span>Accuracy</span></div><div class="stat"><strong id="bestStreak">0</strong><span>Best streak</span></div></div>
+    <div class="panel"><h2 style="font-size:1.25rem">📋 Your learning review</h2><p class="sub" style="font-size:.95rem;margin:0">Review the questions you missed. You can screenshot this page to share your progress with your teacher.</p><div class="review" id="reviewList"></div><div id="allCorrect" style="display:none;text-align:center;padding:20px;color:#166534;font-weight:800">🎉 Perfect work! You answered every question correctly.</div></div>
+    <div class="actions"><button class="btn" id="playAgain">↻ Play Again</button><button class="btn secondary" id="backLessons">Back to Lessons</button></div>
+  </section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const screens = ["menu","cheat","warmup","game","summary"];
+let lessonData=null, currentLesson=null, warmItems=[], gameItems=[], index=0, score=0, streak=0, bestStreak=0, answers=[], soundOn=true, timerId=null, timeLeft=15, locked=false, audioCtx=null;
+
+function show(name){screens.forEach(s=>$("screen-"+s).classList.toggle("active",s===name));window.scrollTo({top:0,behavior:"smooth"});}
+function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+function sentenceHTML(s,answer=""){const parts=s.split("___");return `${escapeHTML(parts[0])}<span class="blank">${answer?escapeHTML(answer):"___"}</span>${escapeHTML(parts.slice(1).join("___"))}`;}
+function escapeHTML(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function playTone(ok){if(!soundOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.connect(gain);gain.connect(audioCtx.destination);osc.type="sine";osc.frequency.value=ok?660:220;gain.gain.setValueAtTime(.0001,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(.12,audioCtx.currentTime+.02);gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.19);osc.start();osc.stop(audioCtx.currentTime+.2);}catch(e){}}
+$("soundToggle").addEventListener("click",()=>{soundOn=!soundOn;$("soundToggle").textContent=soundOn?"🔊 Sound: On":"🔇 Sound: Off";$("soundToggle").setAttribute("aria-pressed",String(!soundOn));});
+async function loadLessons(){try{const r=await fetch("lessons.json");if(!r.ok)throw Error("Could not load lessons.json");const data=await r.json();$("lessonList").innerHTML="";data.lessons.filter(x=>x.available).forEach(item=>{const b=document.createElement("button");b.className="lesson-choice";b.innerHTML=`<span class="lesson-icon">📘</span><span><strong>${escapeHTML(item.title)}</strong><small>${escapeHTML(item.grade)} · CEFR ${escapeHTML(item.level)} · ${escapeHTML(item.subtitle)}</small></span><span style="margin-left:auto;color:#4f46e5;font-weight:900">Play →</span>`;b.addEventListener("click",()=>openLesson(item));$("lessonList").appendChild(b);});}catch(e){$("lessonList").innerHTML=`<div class="panel" style="color:#92400e">Could not load lesson data. Please run this app from a web server and make sure <b>lessons.json</b> is beside index.html.<br><small>${escapeHTML(e.message)}</small></div>`;}}
+async function openLesson(meta){try{const r=await fetch(meta.file);if(!r.ok)throw Error("Lesson file not found");lessonData=await r.json();currentLesson=meta;$("lessonTitle").textContent=lessonData.title;renderCheat();show("cheat");}catch(e){alert("Could not load this lesson. Check that "+meta.file+" is in the app folder.");}}
+function renderCheat(){$("cheatCards").innerHTML=lessonData.cheatsheet.map(c=>`<article class="rule-card"><div class="rule-head"><span class="rule-icon">${escapeHTML(c.icon)}</span><div><h3>${escapeHTML(c.title)}</h3><span style="color:#64748b">${escapeHTML(c.subtitle)}</span></div></div><ul>${c.rules.map(r=>`<li><b>${escapeHTML(r.label)}</b><div class="example">${escapeHTML(r.example)}</div></li>`).join("")}</ul></article>`).join("");}
+$("startWarmup").onclick=()=>startWarmup();$("skipWarmup").onclick=()=>startGame();
+function startWarmup(){const groups={};lessonData.warmup.forEach(item=>{const key=String(item.pair_id).replace(/[AB]$/,"");(groups[key]||(groups[key]=[])).push(item);});warmItems=shuffle(Object.values(groups)).flatMap(pair=>pair.sort((a,b)=>a.pair_id.localeCompare(b.pair_id)));index=0;show("warmup");renderWarmup();}
+function renderWarmup(){const q=warmItems[index];$("warmCount").textContent=`${index+1} / ${warmItems.length}`;$("warmProgress").style.width=`${index/warmItems.length*100}%`;$("warmFocus").textContent=q.rule_focus;$("warmContext").textContent=q.context_clue;$("warmQuestion").innerHTML=sentenceHTML(q.sentence_prompt);$("warmFeedback").className="feedback";$("warmFeedback").textContent="";$("warmNext").disabled=true;$("warmNext").textContent=index===warmItems.length-1?"Start Main Challenge →":"Next →";$("warmOptions").innerHTML="";shuffle([q.correct_answer,q.distractor_1]).forEach(opt=>{const b=document.createElement("button");b.className="option";b.textContent=opt;b.onclick=()=>answerWarm(opt,q,b);$("warmOptions").appendChild(b);});}
+function answerWarm(choice,q,button){if($("warmNext").disabled===false)return;const ok=choice===q.correct_answer;document.querySelectorAll("#warmOptions .option").forEach(b=>{b.disabled=true;if(b.textContent===q.correct_answer)b.classList.add("correct");});if(!ok)button.classList.add("wrong");$("warmQuestion").innerHTML=sentenceHTML(q.sentence_prompt,q.correct_answer);const f=$("warmFeedback");f.className="feedback show "+(ok?"good":"bad");f.innerHTML=`<b>${ok?"✓ Correct!":"Not quite — let's learn."}</b> ${escapeHTML(q.disambiguation_note)}`;$("warmNext").disabled=false;playTone(ok);}
+$("warmNext").onclick=()=>{if(index<warmItems.length-1){index++;renderWarmup();}else startGame();};
+function startGame(){clearInterval(timerId);gameItems=shuffle(lessonData.questions).slice(0,15);index=0;score=0;streak=0;bestStreak=0;answers=[];$("untimed").checked=false;show("game");renderGame();}
+function renderGame(){clearInterval(timerId);locked=false;const q=gameItems[index];$("gameCount").textContent=`Question ${index+1} / ${gameItems.length}`;$("gameProgress").style.width=`${index/gameItems.length*100}%`;$("gameCategory").textContent=`${iconFor(q.icon_type)} ${q.category}`;$("gameContext").textContent=q.context_clue;$("gameQuestion").innerHTML=sentenceHTML(q.sentence_prompt);$("gameFeedback").className="feedback";$("gameFeedback").textContent="";$("gameNext").disabled=true;$("gameNext").textContent=index===gameItems.length-1?"See My Results →":"Next Question →";$("scorePill").textContent=`⭐ Score: ${score}`;$("streakPill").textContent=`🔥 Streak: ${streak}`;$("gameOptions").innerHTML="";shuffle([q.correct_answer,q.distractor_1,q.distractor_2]).forEach(opt=>{const b=document.createElement("button");b.className="option";b.textContent=opt;b.onclick=()=>answerGame(opt,q,b);$("gameOptions").appendChild(b);});if(!$("untimed").checked)startTimer();else{$("timerText").textContent="∞";$("timerFill").style.width="100%";}}
+function iconFor(k){return ({lightning:"⚡",calendar:"🗓️",eye:"👀",heart:"💛",crystal_ball:"🔮",checklist:"📋",shield:"🛡️",speech:"💬"})[k]||"✏️";}
+function startTimer(){timeLeft=15;$("timerText").textContent=timeLeft+"s";$("timerFill").style.width="100%";$("timerBar").classList.remove("low");timerId=setInterval(()=>{timeLeft--;$("timerText").textContent=timeLeft+"s";$("timerFill").style.width=(timeLeft/15*100)+"%";$("timerBar").classList.toggle("low",timeLeft<=5);if(timeLeft<=0){clearInterval(timerId);if(!locked)answerGame(null,gameItems[index],null,true);}},1000);}
+$("untimed").onchange=()=>{if(!locked){clearInterval(timerId);if($("untimed").checked){$("timerText").textContent="∞";$("timerFill").style.width="100%";}else startTimer();}};
+function answerGame(choice,q,button,timedOut=false){if(locked)return;locked=true;clearInterval(timerId);const ok=choice===q.correct_answer;const buttons=[...document.querySelectorAll("#gameOptions .option")];buttons.forEach(b=>{b.disabled=true;if(b.textContent===q.correct_answer)b.classList.add("correct");});if(button&&!ok)button.classList.add("wrong");if(ok){streak++;bestStreak=Math.max(bestStreak,streak);score+=100;}else streak=0;answers.push({q,choice,ok,timedOut});$("scorePill").textContent=`⭐ Score: ${score}`;$("streakPill").textContent=`🔥 Streak: ${streak}`;$("gameQuestion").innerHTML=sentenceHTML(q.sentence_prompt,q.correct_answer);const f=$("gameFeedback");f.className="feedback show "+(ok?"good":"bad");f.innerHTML=`<b>${ok?"✓ Brilliant! +100 points":"✦ "+(timedOut?"Time is up!":"Good try!")}</b> ${escapeHTML(q.feedback_tip)}`;if(!ok)$("gamePanel").classList.add("shake");setTimeout(()=>$("gamePanel").classList.remove("shake"),350);$("gameNext").disabled=false;playTone(ok);}
+$("gameNext").onclick=()=>{if(index<gameItems.length-1){index++;renderGame();}else finishGame();};
+function finishGame(){clearInterval(timerId);const total=gameItems.length,correct=answers.filter(a=>a.ok).length,acc=Math.round(correct/total*100);$("finalScore").textContent=score;$("accuracy").textContent=acc+"%";$("bestStreak").textContent=bestStreak;$("summaryTitle").textContent=acc===100?"Perfect score!":acc>=80?"Fantastic effort!":acc>=60?"Good progress!":"Keep practising!";const missed=answers.filter(a=>!a.ok);$("reviewList").innerHTML=missed.map(a=>`<div class="review-item"><strong>${escapeHTML(a.q.sentence_prompt.replace("___","_____"))}</strong><div class="yours">Your answer: ${escapeHTML(a.choice===null?"No answer (time up)":a.choice)}</div><div class="answer">Correct answer: ${escapeHTML(a.q.correct_answer)}</div><div style="color:#64748b;margin-top:6px">${escapeHTML(a.q.feedback_tip)}</div></div>`).join("");$("allCorrect").style.display=missed.length?"none":"block";$("reviewList").style.display=missed.length?"block":"none";show("summary");}
+$("playAgain").onclick=()=>startGame();$("backLessons").onclick=()=>{clearInterval(timerId);show("menu");};
+loadLessons();
+</script>
+</body>
+</html>
